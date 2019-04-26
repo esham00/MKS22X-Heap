@@ -18,14 +18,22 @@ public class MyHeap{
 	}
     }
     private static void pushUp(int[] data, int index) {
-	int parent = (n-1)/2;
+	int parent = (index-1)/2;
 	if (!(parent<0) && data[index] > data[parent]) {
 	    swap(data, index, parent);
 	    pushUp(data, parent);
 	}
     }
     public static void heapify(int[] data) {
+	for(int i = data.length-1; i > 0; i--) {
+	    pushUp(data, i);
+	}
     }
     public static void heapsort(int[] data) {
+    }
+    public static void main(String[] args) {
+	// int[] ary = new int[]{1, 2, 3, 4, 5, 6, 9, 7, 6};
+	// heapify(ary);
+	// HeapPrinter.print(ary);
     }
 }
