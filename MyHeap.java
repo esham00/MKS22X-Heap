@@ -1,3 +1,4 @@
+import java.util.*;
 public class MyHeap{
     private static void swap(int[] data, int index1, int index2) {
 	int old = data[index1];
@@ -7,7 +8,7 @@ public class MyHeap{
     private static void pushDown(int[]data,int size,int index) {
 	int child1 = 2*index + 1;
 	int child2 = 2*index + 2;
-	if (!(child2>size) && (data[index] < data[child1] || data[index] < data[child2])) {
+	if (!(child2>size)) {
 		if (data[child1] > data[index]) {
 		    swap(data, index, child1);
 		    pushDown(data, size, child1);
@@ -25,15 +26,20 @@ public class MyHeap{
 	}
     }
     public static void heapify(int[] data) {
-	for(int i = data.length-1; i > 0; i--) {
-	    pushUp(data, i);
+	int parent = data.length-1 / 2;
+	for(int i = parent; i >= 0; i--) {
+	    pushDown(data, data.length, i);
 	}
+	// for (int i  = data.length-1; i > 0; i--) {
+	//     pushUp(data, i);
+	// }
     }
     public static void heapsort(int[] data) {
+	heapify(data);
     }
     public static void main(String[] args) {
-	// int[] ary = new int[]{1, 2, 3, 4, 5, 6, 9, 7, 6};
-	// heapify(ary);
-	// HeapPrinter.print(ary);
+	int[] ary = new int[]{1, 2, 3, 4, 5, 6, 9, 7, 6};
+	heapify(ary);
+	System.out.print(Arrays.toString(ary));
     }
 }
