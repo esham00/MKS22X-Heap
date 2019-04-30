@@ -30,9 +30,7 @@ public class MyHeap{
 	for(int i = parent; i >= 0; i--) {
 	    pushDown(data, data.length, i);
 	}
-	// for (int i  = data.length-1; i > 0; i--) {
-	//     pushUp(data, i);
-	// }
+
     }
     public static void heapsort(int[] data) {
 	heapify(data);
