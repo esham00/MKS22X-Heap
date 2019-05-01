@@ -33,17 +33,21 @@ public class MyHeap{
     }
     public static void heapsort(int[] data) {
 	heapify(data);
+	    HeapPrinter.print(data);
+	
 	int swapIndex = data.length-1;
 	while (swapIndex >= 0) {
 	    swap(data, 0, swapIndex);
+	    HeapPrinter.print(data);
 	    pushDown(data, data.length, 0);
 	    swapIndex--;
 	}
     }
     public static void main(String[] args) {
 	int[] ary = new int[]{1, 2, 3, 4, 5, 6, 9, 7, 6};
-	heapsort(ary);
-	System.out.println(Arrays.toString(ary));
+	heapify(ary);
+	//heapsort(ary);
+	HeapPrinter.print(ary);
 	// int[]MAX_LIST = {1000000000,500,10};
     	// for(int MAX : MAX_LIST){
     	//     for(int size = 31250; size < 2000001; size*=2){
