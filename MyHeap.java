@@ -9,10 +9,11 @@ public class MyHeap{
 	int child1 = 2*index + 1;
 	int child2 = 2*index + 2;
 	if (!(child2>size)) {
-		if (data[child1] > data[index]) {
+	    //System.out.println("children" + data[child1] + " " + data[child2]);
+		if (data[child1] > data[index] && data[child1] > data[child2]) {
 		    swap(data, index, child1);
 		    pushDown(data, size, child1);
-		} else {
+		} else if (data[child2] > data[index]) {
 		    swap(data, index, child2);
 		    pushDown(data, size, child2);
 		}
@@ -29,6 +30,7 @@ public class MyHeap{
 	int parent = data.length-1 / 2;
 	for(int i = parent; i >= 0; i--) {
 	    pushDown(data, data.length, i);
+	    //HeapPrinter.print(data);
 	}
     }
     public static void heapsort(int[] data) {
