@@ -8,7 +8,7 @@ public class MyHeap{
     private static void pushDown(int[]data,int size,int index) {
 	int child1 = 2*index + 1;
 	int child2 = 2*index + 2;
-	if (!(child2>size)) {
+	if (!(child2>=size)) {
 	    //System.out.println("children" + data[child1] + " " + data[child2]);
 		if (data[child1] > data[index] && data[child1] > data[child2]) {
 		    swap(data, index, child1);
@@ -35,20 +35,19 @@ public class MyHeap{
     }
     public static void heapsort(int[] data) {
 	heapify(data);
-	    HeapPrinter.print(data);
-	
+	HeapPrinter.print(data);
 	int swapIndex = data.length-1;
 	while (swapIndex >= 0) {
 	    swap(data, 0, swapIndex);
 	    HeapPrinter.print(data);
-	    pushDown(data, data.length, 0);
+	    pushDown(data, swapIndex, 0);
 	    swapIndex--;
 	}
     }
     public static void main(String[] args) {
 	int[] ary = new int[]{1, 2, 3, 4, 5, 6, 9, 7, 6};
-	heapify(ary);
-	//heapsort(ary);
+	//heapify(ary);
+	heapsort(ary);
 	HeapPrinter.print(ary);
 	// int[]MAX_LIST = {1000000000,500,10};
     	// for(int MAX : MAX_LIST){
